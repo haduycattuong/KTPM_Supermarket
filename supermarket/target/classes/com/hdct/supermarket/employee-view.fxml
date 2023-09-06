@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="username" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hdct.supermarket.controller.EmployeeController">
+   <children>
+      <Pane fx:id="order_form" layoutX="-1.0" layoutY="27.0" prefHeight="485.0" prefWidth="695.0">
+         <children>
+            <TabPane prefHeight="485.0" prefWidth="695.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Bán hàng">
+                     <content>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="81.0" prefHeight="27.0" prefWidth="83.0" text="Sản phẩm" />
+                              <Label layoutX="14.0" layoutY="28.0" prefHeight="27.0" prefWidth="83.0" text="Tên sản phẩm" />
+                              <Label layoutX="14.0" layoutY="132.0" prefHeight="27.0" prefWidth="83.0" text="STT" />
+                              <Label layoutX="14.0" layoutY="175.0" prefHeight="27.0" prefWidth="83.0" text="Số lượng" />
+                              <TextField fx:id="employee_productQuantity" layoutX="108.0" layoutY="176.0" text="1" />
+                              <Label layoutX="365.0" layoutY="14.0" prefHeight="27.0" prefWidth="83.0" text="Tổng tiền" />
+                              <Label layoutX="365.0" layoutY="54.0" prefHeight="27.0" prefWidth="83.0" text="Đã giảm" />
+                              <Label layoutX="365.0" layoutY="94.0" prefHeight="27.0" prefWidth="83.0" text="Thanh toán" />
+                              <Label layoutX="365.0" layoutY="132.0" prefHeight="27.0" prefWidth="83.0" text="Tiền mặt" />
+                              <Label layoutX="365.0" layoutY="175.0" prefHeight="27.0" prefWidth="83.0" text="Thối lại" />
+                              <Label fx:id="TotalBeforeSale" layoutX="448.0" layoutY="14.0" prefHeight="27.0" prefWidth="83.0" />
+                              <Label fx:id="Sale" layoutX="448.0" layoutY="54.0" prefHeight="27.0" prefWidth="83.0" />
+                              <Label fx:id="TotalAfterSale" layoutX="448.0" layoutY="94.0" prefHeight="29.0" prefWidth="141.0" />
+                              <TextField fx:id="employee_customer_cash" layoutX="448.0" layoutY="133.0" />
+                              <Label fx:id="change" layoutX="447.0" layoutY="174.0" prefHeight="30.0" prefWidth="144.0" />
+                              <Button fx:id="employee_thanhtoan" layoutX="591.0" layoutY="202.0" mnemonicParsing="false" onAction="#payOrder" text="Thanh toán" />
+                              <Button layoutX="278.0" layoutY="176.0" mnemonicParsing="false" onAction="#addTableOrder" text="Thêm" />
+                              <TableView fx:id="order_detail" layoutY="241.0" onMouseClicked="#selectOrder" prefHeight="213.0" prefWidth="695.0">
+                                <columns>
+                                  <TableColumn fx:id="stt_column" prefWidth="54.0" text="STT" />
+                                  <TableColumn fx:id="product_name_column" prefWidth="256.0" text="Tên sản phẩm" />
+                                    <TableColumn fx:id="product_quantity_column" prefWidth="58.0" text="SL" />
+                                    <TableColumn fx:id="product_price_column" prefWidth="140.0" text="Giá bán" />
+                                    <TableColumn fx:id="total_column" prefWidth="183.0" text="Thành tiền" />
+                                </columns>
+                              </TableView>
+                              <TextField fx:id="employee_productName" layoutX="108.0" layoutY="29.0" onAction="#searchProductName" />
+                              <ComboBox fx:id="product_name_cb" layoutX="108.0" layoutY="82.0" prefWidth="150.0" promptText="Chọn" />
+                              <Button layoutX="480.0" layoutY="202.0" mnemonicParsing="false" onAction="#deleteTableOrder" text="Xoá" />
+                              <Button layoutX="424.0" layoutY="202.0" mnemonicParsing="false" onAction="#clearOrders" text="Clear" />
+                              <TextField fx:id="employee_stt" layoutX="108.0" layoutY="133.0" />
+                              <Button layoutX="531.0" layoutY="202.0" mnemonicParsing="false" onAction="#resetOrder" text="Reset" />
+                              <Button fx:id="employee_bill_btn" layoutX="374.0" layoutY="202.0" mnemonicParsing="false" onAction="#switchForm" text="Bill" />
+                           </children>
+                        </Pane>
+                     </content>
+                  </Tab>
+                <Tab text="Khách hàng">
+                     <content>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="searchCustomer" layoutX="14.0" layoutY="47.0" onAction="#searchCustomer" prefHeight="26.0" prefWidth="199.0" promptText="Search" />
+                              <TableView fx:id="customer_table_view" layoutY="98.0" prefHeight="356.0" prefWidth="695.0">
+                                <columns>
+                                  <TableColumn fx:id="customer_first_name_col" prefWidth="197.0" text="First_Name" />
+                                  <TableColumn fx:id="customer_last_name_col" prefWidth="130.0" text="Last_Name" />
+                                    <TableColumn fx:id="customer_phone_col" prefWidth="147.0" text="Phone" />
+                                    <TableColumn fx:id="customer_birth_date_col" prefWidth="126.0" text="Birth Date" />
+                                    <TableColumn fx:id="customer_rank_col" prefWidth="94.0" text="Rank" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </content></Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </Pane>
+      <Pane fx:id="bill_form" prefHeight="650.0" prefWidth="703.0" visible="false">
+         <children>
+            <TableView fx:id="bill_table_view" layoutY="133.0" prefHeight="315.0" prefWidth="703.0">
+              <columns>
+                <TableColumn fx:id="bill_product_name_col" prefWidth="263.0" text="Tên sản phẩm" />
+                  <TableColumn fx:id="bill_product_quantity_col" prefWidth="67.0" text="SL" />
+                  <TableColumn fx:id="bill_product_price_col" prefWidth="149.0" text="Giá bán" />
+                  <TableColumn fx:id="bill_total_column" prefWidth="223.0" text="Thành tiền" />
+              </columns>
+            </TableView>
+            <Label layoutX="285.0" layoutY="14.0" prefHeight="61.0" prefWidth="199.0" text="PHIẾU THANH TOÁN">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="67.0" prefHeight="17.0" prefWidth="58.0" text="Ngày CT: " />
+            <Label fx:id="bill_date" layoutX="102.0" layoutY="67.0" prefHeight="20.0" prefWidth="137.0" text="Ngày CT: " />
+            <Label layoutX="7.0" layoutY="93.0" prefHeight="17.0" prefWidth="67.0" text="Nhân viên:" />
+            <Label layoutX="98.0" layoutY="93.0" prefHeight="17.0" prefWidth="67.0" text="Nhân viên:" />
+            <Label layoutX="356.0" layoutY="455.0" prefHeight="17.0" prefWidth="58.0" text="Tổng tiền:" />
+            <Separator layoutY="536.0" prefHeight="17.0" prefWidth="703.0" />
+            <Label layoutX="548.0" layoutY="458.0" prefHeight="17.0" prefWidth="116.0" text="Tổng tiền:" />
+            <Label layoutX="356.0" layoutY="479.0" prefHeight="17.0" prefWidth="58.0" text="Đã giảm:" />
+            <Label layoutX="548.0" layoutY="482.0" prefHeight="17.0" prefWidth="58.0" text="Đã giảm:" />
+            <Label layoutX="352.0" layoutY="516.0" prefHeight="17.0" prefWidth="116.0" text="Thanh toán">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="bill_total" layoutX="545.0" layoutY="516.0" prefHeight="20.0" prefWidth="150.0" text="Thanh toán">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="356.0" layoutY="559.0" prefHeight="17.0" prefWidth="58.0" text="Tiền mặt:" />
+            <Label fx:id="bill_customer_cash" layoutX="548.0" layoutY="555.0" prefHeight="17.0" prefWidth="116.0" text="Đã giảm:" />
+            <Label layoutX="356.0" layoutY="585.0" prefHeight="17.0" prefWidth="58.0" text="Tiền thối: " />
+            <Label fx:id="bill_customer_change" layoutX="548.0" layoutY="581.0" prefHeight="17.0" prefWidth="116.0" text="Đã giảm:" />
+            <Button fx:id="bill_btn" layoutX="9.0" layoutY="8.0" mnemonicParsing="false" onAction="#switchForm" text="Back" />
+         </children>
+      </Pane>
+      <Label fx:id="employee_username" layoutX="319.0" layoutY="6.0" text="UserName" />
+   </children>
+</Pane>

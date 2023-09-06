@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="537.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hdct.supermarket.controller.AdminController">
+   <children>
+      <Pane fx:id="username" prefHeight="560.0" prefWidth="810.0">
+         <children>
+            <Label fx:id="admin_username_lb" layoutX="356.0" layoutY="3.0" prefHeight="26.0" prefWidth="150.0" text="Username">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TabPane layoutY="33.0" prefHeight="527.0" prefWidth="810.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="add_product_tab" text="Thêm sản phẩm">
+               <content>
+                  <Pane prefHeight="513.0" prefWidth="706.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="46.0" prefHeight="35.0" prefWidth="107.0" text="Product ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="98.0" prefHeight="35.0" prefWidth="107.0" text="Product Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="149.0" prefHeight="35.0" prefWidth="107.0" text="Product Price">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="213.0" prefHeight="35.0" prefWidth="107.0" text="Status">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="product_productID" layoutX="111.0" layoutY="51.0" prefHeight="33.0" prefWidth="150.0" />
+                        <TextField fx:id="product_productName" layoutX="111.0" layoutY="99.0" prefHeight="33.0" prefWidth="150.0" />
+                        <TextField fx:id="product_productPrice" layoutX="111.0" layoutY="150.0" prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox fx:id="product_stt_cb" layoutX="111.0" layoutY="218.0" onAction="#selectProductsStatus" prefWidth="150.0" promptText="Choose" />
+                        <Separator layoutX="283.0" layoutY="3.0" orientation="VERTICAL" prefHeight="436.0" prefWidth="19.0" />
+                        <Button fx:id="product_add_btn" layoutX="14.0" layoutY="325.0" mnemonicParsing="false" onAction="#addProducts" prefHeight="37.0" prefWidth="85.0" text="Add" />
+                        <Button fx:id="product_update_btn" layoutX="176.0" layoutY="325.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="37.0" prefWidth="85.0" text="Update" />
+                        <Button fx:id="product_delete_btn" layoutX="14.0" layoutY="380.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="37.0" prefWidth="85.0" text="Delete" />
+                        <Button fx:id="product_clear_btn" layoutX="176.0" layoutY="380.0" mnemonicParsing="false" onAction="#clearProduct" prefHeight="37.0" prefWidth="85.0" text="Clear" />
+                        <TableView fx:id="product_table_view" layoutX="291.0" layoutY="52.0" onMouseClicked="#selectProducts" prefHeight="452.0" prefWidth="519.0">
+                          <columns>
+                            <TableColumn fx:id="product_id_col" prefWidth="75.0" text="Product ID" />
+                            <TableColumn fx:id="product_name_col" prefWidth="229.0" text="Product Name" />
+                              <TableColumn fx:id="product_price_col" prefWidth="106.0" text="Price" />
+                              <TableColumn fx:id="product_status_col" prefWidth="105.0" text="Status" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="product_search" layoutX="293.0" layoutY="14.0" onAction="#searchProduct" prefHeight="28.0" prefWidth="236.0" promptText="Search" />
+                        <Button fx:id="logOut_btn" layoutX="14.0" layoutY="439.0" mnemonicParsing="false" onAction="#logOut" prefHeight="37.0" prefWidth="85.0" text="Sign Out" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+          <Tab fx:id="add_employee_tab" text="Thêm nhân viên">
+               <content>
+                  <Pane prefHeight="499.0" prefWidth="810.0">
+                     <children>
+                        <TableView fx:id="employee_table_view" layoutX="-1.0" onMouseClicked="#selectEmployees" prefHeight="277.0" prefWidth="810.0">
+                          <columns>
+                            <TableColumn fx:id="employee_id_col" prefWidth="75.0" text="Employee ID" />
+                            <TableColumn fx:id="employee_firstname_col" prefWidth="209.0" text="First Name" />
+                              <TableColumn fx:id="employee_lastname_col" prefWidth="114.0" text="Last Name" />
+                              <TableColumn fx:id="employee_username_col" prefWidth="178.0" text="Username" />
+                              <TableColumn fx:id="employee_password_col" prefWidth="125.0" text="Password" />
+                              <TableColumn fx:id="employee_gender_col" prefWidth="108.0" text="Gender" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="289.0" prefHeight="35.0" prefWidth="107.0" text="Employee ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="employee_employeeID" layoutX="110.0" layoutY="290.0" prefHeight="33.0" prefWidth="150.0" />
+                        <Label layoutX="14.0" layoutY="401.0" prefHeight="35.0" prefWidth="107.0" text="Password">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="employee_password" layoutX="110.0" layoutY="402.0" prefHeight="33.0" prefWidth="150.0" />
+                        <Label layoutX="14.0" layoutY="344.0" prefHeight="35.0" prefWidth="107.0" text="Username">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="employee_username" layoutX="110.0" layoutY="345.0" prefHeight="33.0" prefWidth="150.0" />
+                        <Label layoutX="333.0" layoutY="344.0" prefHeight="35.0" prefWidth="107.0" text="Last Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="employee_lastname" layoutX="429.0" layoutY="345.0" prefHeight="33.0" prefWidth="150.0" />
+                        <Label layoutX="333.0" layoutY="288.0" prefHeight="35.0" prefWidth="107.0" text="First Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="employee_firstname" layoutX="429.0" layoutY="289.0" prefHeight="33.0" prefWidth="192.0" />
+                        <Label layoutX="14.0" layoutY="446.0" prefHeight="35.0" prefWidth="107.0" text="Gender">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="employee_gender_cb" layoutX="110.0" layoutY="451.0" prefWidth="150.0" promptText="Male" />
+                        <Button fx:id="employee_add_btn" layoutX="720.0" layoutY="447.0" mnemonicParsing="false" onAction="#addEmployees" prefHeight="35.0" prefWidth="76.0" text="Add" />
+                        <Button fx:id="employee_update_btn" layoutX="629.0" layoutY="447.0" mnemonicParsing="false" onAction="#updateEmployee" prefHeight="35.0" prefWidth="76.0" text="Update" />
+                        <Button fx:id="employee_delete_btn" layoutX="466.0" layoutY="447.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="35.0" prefWidth="76.0" text="Delete" />
+                        <Button fx:id="employee_clear_btn" layoutX="353.0" layoutY="447.0" mnemonicParsing="false" onAction="#clearEmployee" prefHeight="35.0" prefWidth="76.0" text="Clear" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab fx:id="add_store_tab" text="Thêm chi nhánh">
+               <content>
+                  <Pane prefHeight="473.0" prefWidth="689.0">
+                     <children>
+                        <Pane prefHeight="507.0" prefWidth="810.0">
+                           <children>
+                              <TableView fx:id="store_table_view" onMouseClicked="#selectStores" prefHeight="277.0" prefWidth="810.0">
+                                 <columns>
+                                    <TableColumn fx:id="store_id_col" prefWidth="98.0" text="Store ID" />
+                                    <TableColumn fx:id="store_name_col" prefWidth="335.0" text="Store Name" />
+                                    <TableColumn fx:id="store_address_col" prefWidth="376.0" text="Address" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="332.0" layoutY="297.0" prefHeight="35.0" prefWidth="107.0" text="Address">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="store_address" layoutX="428.0" layoutY="298.0" prefHeight="38.0" prefWidth="347.0" />
+                              <Label layoutX="22.0" layoutY="359.0" prefHeight="35.0" prefWidth="107.0" text="Store Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="store_storename" layoutX="118.0" layoutY="360.0" prefHeight="35.0" prefWidth="200.0" />
+                           </children>
+                        </Pane>
+                        <Label layoutX="24.0" layoutY="299.0" prefHeight="35.0" prefWidth="107.0" text="Store ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="store_storeID" layoutX="120.0" layoutY="300.0" prefHeight="33.0" prefWidth="150.0" />
+                        <Button fx:id="store_save_btn" layoutX="730.0" layoutY="457.0" mnemonicParsing="false" onAction="#addStores" prefHeight="35.0" prefWidth="76.0" text="Add" />
+                        <Button fx:id="store_update_btn" layoutX="639.0" layoutY="457.0" mnemonicParsing="false" onAction="#updateStore" prefHeight="35.0" prefWidth="76.0" text="Update" />
+                        <Button fx:id="store_delete_btn" layoutX="476.0" layoutY="457.0" mnemonicParsing="false" onAction="#deleteStore" prefHeight="35.0" prefWidth="76.0" text="Delete" />
+                        <Button fx:id="store_clear_btn" layoutX="363.0" layoutY="457.0" mnemonicParsing="false" onAction="#clearStore" prefHeight="35.0" prefWidth="76.0" text="Clear" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
